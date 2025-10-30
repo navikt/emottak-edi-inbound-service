@@ -1,13 +1,27 @@
-apiVersion: "nais.io/v1alpha1"
-kind: "Application"
+apiVersion: nais.io/v1alpha1
+kind: Application
 metadata:
-  name: "emottak-edi-inbound-service"
-  namespace: "team-emottak"
+  name: emottak-edi-inbound-service
+  namespace: team-emottak
   labels:
-    "team": "team-emottak"
+    team: team-emottak
   annotations:
     texas.nais.io/enabled: "true"
 spec:
+  ingresses:
+    - https://edi-outbound-service.intern.dev.nav.no
+  image: {{image}}
+  replicas:
+    min: 1
+    max: 1
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      cpu: "1000m"
+      memory: "1024Mi"
+    requests:
+      cpu: "200m"
+      memory: "512Mi"
   tokenx:
     enabled: true
   azure:
@@ -15,7 +29,6 @@ spec:
       enabled: true
       allowAllUsers: true
   webproxy: true
-  image: {{image}}
   liveness:
     path: "/internal/health/liveness"
     port: 8080
@@ -41,19 +54,6 @@ spec:
     initialDelay: 30
     timeout: 10
     failureThreshold: 10
-  replicas:
-    min: 1
-    max: 1
-    cpuThresholdPercentage: 50
-  resources:
-    limits:
-      cpu: "1000m"
-      memory: "1024Mi"
-    requests:
-      cpu: "200m"
-      memory: "512Mi"
-  ingresses:
-    - "https://edi-outbound-service.intern.dev.nav.no"
   vault:
     enabled: true
     paths:
