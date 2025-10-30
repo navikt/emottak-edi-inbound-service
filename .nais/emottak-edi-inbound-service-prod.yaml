@@ -1,0 +1,71 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: "emottak-edi-inbound-service"
+  namespace: "team-emottak"
+  labels:
+    "team": "team-emottak"
+  annotations:
+    texas.nais.io/enabled: "true"
+spec:
+  tokenx:
+    enabled: true
+  azure:
+    application:
+      enabled: true
+  webproxy: true
+  image: {{image}}
+  liveness:
+    path: "/internal/health/liveness"
+    port: 8080
+    initialDelay: 30
+    timeout: 10
+    failureThreshold: 10
+  observability:
+    autoInstrumentation:
+      enabled: true
+      runtime: java
+      destinations:
+        - id: "grafana-lgtm"
+        - id: "elastic-apm"
+    logging:
+      destinations:
+        - id: elastic
+        - id: loki
+  prometheus:
+    enabled: true
+    path: /prometheus
+  readiness:
+    path: "/internal/health/readiness"
+    port: 8080
+    initialDelay: 30
+    timeout: 10
+    failureThreshold: 10
+  replicas:
+    min: 1
+    max: 1
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      cpu: "1000m"
+      memory: "1024Mi"
+    requests:
+      cpu: "200m"
+      memory: "1024Mi"
+  ingresses:
+    - "https://edi-outbound-service.intern.nav.no"
+  vault:
+    enabled: true
+    paths:
+      - kvPath: /serviceuser/data/prod/srvtokt
+        mountPath: /secret/serviceuser
+  kafka:
+    pool: nav-prod
+  accessPolicy:
+    inbound:
+      rules:
+        - application: emottak-edi-inbound
+  env:
+    - name: HELLO
+      value: "world"
+
