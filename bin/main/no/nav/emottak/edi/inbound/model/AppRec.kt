@@ -1,4 +1,4 @@
-package no.nav.emottak.edi.inboundservice.model
+package no.nav.emottak.edi.inbound.model
 
 import kotlinx.serialization.Serializable
 

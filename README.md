@@ -4,6 +4,14 @@ Only `emottak-edi-adapter` will call this app (`emottak-edi-inbound-service`).
 
 ---
 
+## New project setup
+
+If you want to bootstrap a new Kotlin/Ktor service using this repository as a template, follow the step-by-step guide in `docs/new-project-setup.md`:
+
+- See: [New project setup in team emottak](docs/new-project-setup.md)
+
+---
+
 ## API Endpoints
 
 ### Health and metrics

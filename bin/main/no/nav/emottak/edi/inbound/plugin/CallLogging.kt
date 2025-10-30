@@ -1,16 +1,16 @@
-package no.nav.emottak.edi.inboundservice.plugin
+package no.nav.emottak.edi.inbound.plugin
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.ApplicationCallPipeline
 import io.ktor.server.application.call
 import io.ktor.server.request.httpMethod
 import io.ktor.server.request.path
-import org.slf4j.LoggerFactory
 import org.slf4j.event.Level
 
 fun Application.configureCallLogging() {
-    val logger = LoggerFactory.getLogger("CallLogging")
+    val log = KotlinLogging.logger {}
 
     intercept(ApplicationCallPipeline.Monitoring) {
         val start = System.currentTimeMillis()
@@ -40,10 +40,10 @@ fun Application.configureCallLogging() {
         }
 
         when (level) {
-            Level.ERROR -> logger.error(message)
-            Level.WARN -> logger.warn(message)
-            Level.INFO -> logger.info(message)
-            else -> logger.debug(message)
+            Level.ERROR -> log.error { message }
+            Level.WARN -> log.warn { message }
+            Level.INFO -> log.info { message }
+            else -> log.debug { message }
         }
     }
 }

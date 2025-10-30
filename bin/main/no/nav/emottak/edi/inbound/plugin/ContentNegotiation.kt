@@ -1,4 +1,4 @@
-package no.nav.emottak.edi.inboundservice.plugin
+package no.nav.emottak.edi.inbound.plugin
 
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application

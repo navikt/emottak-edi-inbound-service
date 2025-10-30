@@ -1,4 +1,4 @@
-package no.nav.emottak.edi.inboundservice.config
+package no.nav.emottak.edi.inbound.config
 
 import io.ktor.client.plugins.logging.LogLevel
 import no.nav.emottak.utils.config.Server
