@@ -100,7 +100,7 @@ git push -u origin main
 - [ ] Repo added in NAIS console team repositories
 - [ ] Repo has `GITHUB_TOKEN` available for builds (default in Actions)
 - [ ] Merge to `main` → verify image is built and app deploys to `dev-gcp`
-- [ ] Test deployed ingress healthcheck endpoint!
+- [ ] Test deployed ingress healthcheck endpoint!
 
 ### Quick test after first deployment
 - After the GitHub Actions job completes, open your app’s ingress URL and hit the health endpoints:
@@ -109,7 +109,7 @@ git push -u origin main
   - If both return 200 with text, the app is up in dev.
 
 ### Prod: similar setup
-- Duplicate the dev NAIS manifest for prod (adjust `ingresses`, resources, and policies) and create a prod workflow mirroring the dev one but deploying to `prod-gcp`.
+- Duplicate the dev NAIS manifest for prod (adjust `ingresses`, resources, and policies) and create a prod workflow mirroring the dev one but deploying to `prod-fss` (we may want to use `gcp` in the future).
 
 ### After bootstrap
 - Add proper README with domain context and API docs.
