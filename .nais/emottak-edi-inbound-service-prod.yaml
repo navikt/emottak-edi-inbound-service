@@ -50,7 +50,7 @@ spec:
       cpu: "200m"
       memory: "1024Mi"
   ingresses:
-    - "https://edi-outbound-service.intern.nav.no"
+    - "https://edi-inbound-service.intern.nav.no"
   vault:
     enabled: true
     paths:

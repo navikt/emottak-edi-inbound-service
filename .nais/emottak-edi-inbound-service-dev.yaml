@@ -9,7 +9,7 @@ metadata:
     texas.nais.io/enabled: "true"
 spec:
   ingresses:
-    - https://edi-outbound-service.intern.dev.nav.no
+    - https://edi-inbound-service.intern.dev.nav.no
   image: {{image}}
   replicas:
     min: 1
