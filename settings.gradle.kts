@@ -7,7 +7,7 @@ dependencyResolutionManagement {
             version("jwt", "4.4.0")
             version("nimbus-jwt", "9.31")
             version("suspendapp", "0.5.0")
-            version("ktor", "3.2.0")
+            version("ktor", "3.3.1")
             version("kotlin-logging", "7.0.3")
             version("token-validation-ktor", "5.0.30")
             version("eclipse-angus", "2.0.2")
@@ -61,7 +61,7 @@ dependencyResolutionManagement {
 
         create("testLibs") {
             version("arrow", "2.0.0")
-            version("ktor", "3.2.0")
+            version("ktor", "3.3.1")
             version("ktor-server-test", "3.0.3")
             version("kotest", "5.9.1")
             version("mock-oauth2", "2.1.2")
