@@ -1,3 +1,9 @@
+# Archived!
+
+Because we decided to go for simpler architecture, we no longer need a dedicated `inbound-service`. :)
+
+----
+
 # emottak-edi-inbound-service
 
 Only `emottak-edi-adapter` will call this app (`emottak-edi-inbound-service`).
